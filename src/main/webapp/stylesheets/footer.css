@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+footer {
+    background: #111;
+    padding: 20px; /* Adjust padding as needed */
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer span a {
+    color: #AA336A;
+    text-decoration: none;
+}
+
+footer span a:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    margin-top: 10px; /* Adjust margin-top as needed */
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 24px;
+    margin-right: 10px; /* Adjust margin-right as needed */
+}
+
+.social-icons a:hover {
+    color: #AA336A; 
+}

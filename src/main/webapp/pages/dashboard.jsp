@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Dashboard</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/stylesheets/dashboard.css" />
+<!-- <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"> -->
 </head>
 <body>
     <nav>
@@ -17,10 +18,7 @@
         </div>
         <div class="menu">
             <ul class="nav-links">
-                <li><a href="">
-                    <i class="uil uil-home"></i>
-                    <span class="link-name">Dashboard</span>
-                </a></li>
+                
                 <li><a href="#">
                     <i class="uil uil-user"></i>
                     <span class="link-name">Profile</span>

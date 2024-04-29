@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
             } else {
             	System.out.println("user");
                 // If the user is not an admin, redirect to the home page
-                response.sendRedirect(request.getContextPath() + "/home.jsp");
+                response.sendRedirect(request.getContextPath() + "/pages/home.jsp");
             }
             // Set a success message attribute
             request.setAttribute(stringUtil.MESSAGE_SUCCESS, stringUtil.MESSAGE_SUCCESS_LOGIN);

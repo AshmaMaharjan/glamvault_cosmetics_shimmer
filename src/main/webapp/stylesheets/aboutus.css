@@ -1,0 +1,52 @@
+@charset "ISO-8859-1";
+/* Reset CSS */
+body, h1, h2, h3, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #f48fb1;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.Content_Wrapper {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+h1, h2, h3 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+
+.makeupgallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.makeupItem {
+  width: 30%;
+  margin-bottom: 20px;
+}
+
+.makeupItem img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

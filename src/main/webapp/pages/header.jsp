@@ -1,3 +1,6 @@
+<%@page import="util.stringUtil"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.http.HttpServletRequest"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -109,16 +112,42 @@ body {
 <link rel="stylesheet" type="text/css" href="../stylesheets/header.css" />
 </head>
 <body>
+<%
+    // Get the session and request objects
+    HttpSession userSession = request.getSession();
+    String currentUser = (String) userSession.getAttribute(stringUtil.User_name);
+    String contextPath = request.getContextPath();
+    
+%>
     <nav class="navigation">
         <div class="menuheader">
             GlamVault Cosmetics Shimmer <!-- This is   ${pageContext.request.contextPath} your logo text -->
         </div>
         <ul class="menulinks">
-            <li><a href="#">Home</a></li>
+            <li><a href="home.jsp">Home</a></li>
             <li class="center"><a href="#">Profile</a></li>
-            <li class="forward"><a href="#">About Us</a></li>
+            <li class="forward"><a href="aboutus.jsp">About Us</a></li>
             <li class="forward"><a href="#">Product</a></li>
-            <li><a href="#">LogIn</a></li>
+           
+             <li>
+                <form action="<%
+                    // Conditionally set the action URL based on user session
+                    if (currentUser != null) {
+                        out.print(contextPath + stringUtil.SERVLET_URL_LOGOUT);
+                    } else {
+                        out.print(contextPath + stringUtil.PAGE_URL_LOGIN);
+                    }
+                %>" method="post">
+                    <input type="submit" value="<%
+                        // Conditionally set the button label based on user session
+                        if (currentUser != null) {
+                            out.print(stringUtil.LOGOUT);
+                        } else {
+                            out.print(stringUtil.LOGIN);
+                        }
+                    %>"/>
+                </form>
+            	</li>
         </ul>
     </nav>
 </body>

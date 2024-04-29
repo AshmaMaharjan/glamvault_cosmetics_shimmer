@@ -57,7 +57,7 @@ public class stringUtil {
 	// End: JSP Route
 
 	// Start: Servlet Route
-	public static final String SERVLET_URL_LOGIN = "/login";
+	public static final String SERVLET_URL_LOGIN = "/LoginServlet";
 	public static final String SERVLET_URL_REGISTER = "/registerstudent";
 	public static final String SERVLET_URL_LOGOUT = "/logout";
 	// End: Servlet Route

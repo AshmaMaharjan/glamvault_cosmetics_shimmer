@@ -24,11 +24,11 @@
           <input type="checkbox" id="RememberMe" name="RememberMe">
           <p>Remember me</p>
         </label>
-        <a href="#">Forget password?</a>
+        <a href="forgetpassword.jsp">Forget password?</a>
       </div>
       <button type="submit" id="loginButton">Log In</button>
       <div class="register">
-        <p>Don't have an account? <a href="#" id="registerLink">Register</a></p>
+        <p>Don't have an account? <a href="register.jsp" id="registerLink">Register</a></p>
       </div>
     </form>
   </div>

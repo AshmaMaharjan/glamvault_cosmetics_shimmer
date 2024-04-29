@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import controller.servlets.productAdmin;
 import model.LoginModel;
 import model.Loginresult;
+import model.MakeupModel;
 import model.PasswordEncryptionWithAes;
 import model.UserModel;
 import model.product;
@@ -182,22 +183,7 @@ public class GlamVaultDBController {
             return -1; // Error
         }
     }
-    public int ADDProduct(product Product) {
-    	try (Connection con = getConnection();
-                PreparedStatement ss = con.prepareStatement("INSERT INTO makeup (Makeup_Name, Price,  product_image) VALUES (?, ?,  ?)")) {
-    		ss.setString(1, Product.getProductName());
-    		
-    		ss.setDouble(2, Product.getPrice());
-    		ss.setString(3, Product.getUserImageUrl());
-
-    		ss.executeUpdate();
-        } catch ( ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-            return -1;
-        }
-		return 0;
-		
-    }
+    
 
     // Method to retrieve all products from the database
 //    public List<ProductAdmin> getAllProducts() {
@@ -246,9 +232,9 @@ public class GlamVaultDBController {
         try (Connection con = getConnection();
                 PreparedStatement st = con.prepareStatement("SELECT COUNT(*) FROM user WHERE phone_number = ?")) {
             st.setString(1, phoneNumber);
-            try (ResultSet rs = st.executeQuery()) {
-                if (rs.next()) {
-                    int count = rs.getInt(1);
+            try (ResultSet ss = st.executeQuery()) {
+                if (ss.next()) {
+                    int count = ss.getInt(1);
                     return count > 0;
                 }
             }
@@ -257,5 +243,42 @@ public class GlamVaultDBController {
         }
         return false;
     }
+    public int ADDProduct(product Product) {
+    	try (Connection con = getConnection();
+                PreparedStatement ss = con.prepareStatement("INSERT INTO makeup (Makeup_Name, Price,  product_image) VALUES (?, ?,  ?)")) {
+    		ss.setString(1, Product.getProductName());
+    		
+    		ss.setDouble(2, Product.getPrice());
+    		ss.setString(3, Product.getUserImageUrl());
+
+    		return ss.executeUpdate();
+        } catch ( ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            e.getMessage();
+            return -1;
+        }
+    }
+    public ArrayList<MakeupModel> getAllMakeup() {
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM makeup");
+             ResultSet result = stmt.executeQuery()) {
+
+            ArrayList<MakeupModel> makeupGlams = new ArrayList<>();
+            while (result.next()) {
+            	MakeupModel makeupGlam = new MakeupModel();
+            	makeupGlam.setMakeupID(result.getInt("ID_Makeup"));
+            	makeupGlam.setMakeupName(result.getString("Makeup_Name"));
+            	makeupGlam.setPrice(result.getDouble("Price"));
+            	makeupGlam.setProductImage(result.getString("product_image"));
+            
+            	makeupGlams.add(makeupGlam);
+            }
+            return makeupGlams;
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return null; // Error
+        }
+    }
 }
+
 

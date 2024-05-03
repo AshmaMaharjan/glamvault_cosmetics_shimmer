@@ -42,8 +42,9 @@ public class productAdmin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ArrayList<MakeupModel> makeupGlams = dbController.getAllMakeup();
+		request.setAttribute("makeupGlams", makeupGlams);
+		request.getRequestDispatcher("/pages/productAdmin.jsp").forward(request, response);
 	}
 
 	/**

@@ -32,8 +32,8 @@ body {
     left: 0;
     font-size: 20px;
     font-weight: bold;
-    color: #fff; /* Text color for the logo */
-    z-index: 4; /* Ensure the header stays above the navigation */
+    color: #fff;
+    z-index: 2; /* Increase z-index to bring the header to the front */
 }
 
 .menulinks {
@@ -107,6 +107,38 @@ body {
     transform: scaleX(1);
     transform-origin: left;
 }
+.login-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    color: #333;
+    font-size: 14px;
+}
+
+.login-wrapper form {
+    display: flex;
+    align-items: center;
+}
+
+.login-wrapper input[type="submit"] {
+    padding: 6px 15px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #b59e7a; /* Dark beige color */
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.login-wrapper input[type="submit"]:hover {
+    background-color: #8b7a55; 
+}
+
+.login-wrapper span {
+    margin-top: 5px; /* Add margin between icon and text */
+}
 
 </style>
 <link rel="stylesheet" type="text/css" href="../stylesheets/header.css" />
@@ -125,11 +157,14 @@ body {
         </div>
         <ul class="menulinks">
             <li><a href="home.jsp">Home</a></li>
-            <li class="center"><a href="#">Profile</a></li>
+            <li class="center"><a href="profile.jsp">Profile</a></li>
             <li class="forward"><a href="aboutus.jsp">About Us</a></li>
             <li class="forward"><a href="#">Product</a></li>
-           
+           <li class="forward"><a href="contact.jsp">Contact</a></li>
              <li>
+             
+                        <div class="login-wrapper">
+                        
                 <form action="<%
                     // Conditionally set the action URL based on user session
                     if (currentUser != null) {
@@ -147,7 +182,10 @@ body {
                         }
                     %>"/>
                 </form>
+                </div>
+               
             	</li>
+            
         </ul>
     </nav>
 </body>

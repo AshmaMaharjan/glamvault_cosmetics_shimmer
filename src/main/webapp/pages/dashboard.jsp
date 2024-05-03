@@ -1,3 +1,4 @@
+<%@page import="util.stringUtil"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -6,9 +7,16 @@
 <meta charset="ISO-8859-1">
 <title>Dashboard</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/stylesheets/dashboard.css" />
-<!-- <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"> -->
+ <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"> 
 </head>
 <body>
+<%
+    // Get the session and request objects
+    HttpSession userSession = request.getSession();
+    String currentUser = (String) userSession.getAttribute(stringUtil.User_name);
+    String contextPath = request.getContextPath();
+    
+    %>
     <nav>
         <div class="logo">
             <div class="logoimg">
@@ -19,20 +27,35 @@
         <div class="menu">
             <ul class="nav-links">
                 
-                <li><a href="#">
+                <li><a href="profile.jsp">
                     <i class="uil uil-user"></i>
                     <span class="link-name">Profile</span>
                 </a></li>
-                <li><a href="#">
+                <li><a href="productAdmin.jsp">
                     <i class="uil uil-list-ul"></i>
                     <span class="link-name">Product List</span>
                 </a></li>
             </ul>
             <ul class="logout-mode">
-                <li><a href="#">
-                    <i class="uil uil-signout"></i>
-                    <span class="link-name">Logout</span>
-                </a></li>
+                <li>
+                <form action="<%
+                    // Conditionally set the action URL based on user session
+                    if (currentUser != null) {
+                        out.print(contextPath + stringUtil.SERVLET_URL_LOGOUT);
+                    } else {
+                        out.print(contextPath + stringUtil.PAGE_URL_LOGIN);
+                    }
+                %>" method="post">
+                    <input type="submit" value="<%
+                        // Conditionally set the button label based on user session
+                        if (currentUser != null) {
+                            out.print("Logout");
+                        } else {
+                            out.print("Login");
+                        }
+                    %>"/>
+                </form>
+                </li>
                 
     </nav>
     <section class="dashboard">

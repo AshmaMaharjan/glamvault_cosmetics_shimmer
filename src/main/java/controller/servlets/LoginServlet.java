@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.database.GlamVaultDBController;
 import model.LoginModel;
@@ -40,10 +41,20 @@ public class LoginServlet extends HttpServlet {
             // Successful login
             if ("admin".equals(loginResult.getRole())) {
             	System.out.println("Admin"+loginResult);
+            	HttpSession userSession = request.getSession();
+                userSession.setAttribute("username", user_name);
+                userSession.setAttribute("role", "admin"); // Set admin role
+                userSession.setMaxInactiveInterval(30 * 30);
+                userSession.setAttribute("loggedIn", true);
                 // If the user is an admin, redirect to the admin dashboard
                 response.sendRedirect(request.getContextPath() + "/pages/dashboard.jsp");
+                
             } else {
             	System.out.println("user");
+            	HttpSession userSession = request.getSession();
+                userSession.setAttribute("username", user_name);
+                userSession.setMaxInactiveInterval(30 * 30);
+                userSession.setAttribute("loggedIn", true);
                 // If the user is not an admin, redirect to the home page
                 response.sendRedirect(request.getContextPath() + "/pages/home.jsp");
             }

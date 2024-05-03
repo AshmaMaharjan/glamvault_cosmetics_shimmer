@@ -54,10 +54,22 @@
 			        <td>${makeupGlam.makeupID}</td>
 			        <td>${makeupGlam.makeupName}</td>
 			        <td>${makeupGlam.price}</td>
-			        <td><img src="resources/images/user/${makeupGlam.productImage}" height="100" alt="product image"></td>
+			        <td><img src="${pageContext.request.contextPath}/resources/user/${makeupGlam.productImage}" height="100" alt="product image"></td>
 					<td>
-			            <button class="edit-btn">Edit</button>
-			            <button class="delete-btn">Delete</button>
+			            <form action="${pageContext.request.contextPath}/EditMakeupServlet" method="post">
+                                        <input type="hidden" id="makeup_Id" name="makeup_Id" value="${makeupGlam.makeupID}">
+                                        <input type="hidden" id="makeup_Name" name="makeup_Name" value="${makeupGlam.makeupName}">
+                                        <input type="hidden" id="price" name="price" value="${makeupGlam.price}">
+                                     
+                                        <button type="submit" class="edit-btn">Edit</button>
+                                    </form>
+                                    
+                                    <form action="${pageContext.request.contextPath}/DeleteProductServlet" method="post">
+								    <input type="hidden" id="makeupId" name="makeupId" value="${makeupGlam.makeupID}">
+								    <button type="submit" class="delete-btn">Delete</button>
+								</form>
+								                                    
+                                    
 			        	</td>
 			    	</tr>
 				</c:forEach>

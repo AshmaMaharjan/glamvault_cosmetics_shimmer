@@ -258,6 +258,40 @@ public class GlamVaultDBController {
             return -1;
         }
     }
+    public int deleteMakeup(int makeupId) {
+        try (Connection con = getConnection();
+             PreparedStatement st = con.prepareStatement("DELETE FROM makeup WHERE ID_Makeup = ?")) {
+            st.setInt(1, makeupId);
+            
+            return st.executeUpdate();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+            return -1; // Error
+        }
+    }
+    public int updateMakeup(MakeupModel makeup) {
+        try (Connection con = getConnection();
+             PreparedStatement st = con.prepareStatement("UPDATE makeup SET Makeup_Name = ?, Price = ? WHERE ID_Makeup = ?")) {
+            st.setString(1, makeup.getMakeupName());
+            st.setDouble(2, makeup.getPrice());
+            st.setInt(3, makeup.getMakeupID());
+
+
+            int result = st.executeUpdate();
+
+            if (result > 0) {
+                System.out.println("Database updated successfully");
+                return 1; // Success
+            } else {
+                System.out.println("No rows affected, database not updated");
+                return 0; // No rows affected
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return -1; // Error
+        }
+    }
     public ArrayList<MakeupModel> getAllMakeup() {
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM makeup");

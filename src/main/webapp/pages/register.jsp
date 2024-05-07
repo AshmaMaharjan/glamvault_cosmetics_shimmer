@@ -13,6 +13,10 @@
 </head>
 <body>
   <div class="container">
+  <% String error = (String) request.getAttribute(stringUtil.MESSAGE_ERROR); %>
+        <% if (error != null && !error.isEmpty()) { %>
+           <div style="color: red;"><%= error %></div>
+        <% } %>
     <div class="title">Registration</div>
     <div class="content">
       <form action="/GlamVault_Cosmetics_Shimmer/RegisterServlet" method="POST" enctype="multipart/form-data">

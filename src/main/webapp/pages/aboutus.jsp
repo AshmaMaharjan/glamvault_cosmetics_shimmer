@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/stylesheets/aboutus.css" />
 </head>
 <body>
+<jsp:include page="header.jsp"/> 
   <header>
     <h1>Welcome to GlamVault</h1>
   </header>
@@ -24,13 +25,13 @@
     </ul>
     <div class="makeupgallery">
       <div class="makeupItem">
-        <img src="makeup.jpg" alt="Makeup Product 1">
+        <img src="../resources/user/foundation.jpg" alt="Makeup Product 1">
       </div>
       <div class="makeupItem">
-        <img src="lip.jpg" alt="Makeup Product 2">
+        <img src="../resources/user/blushh.jpg" alt="Makeup Product 2">
       </div>
       <div class="makeupItem">
-        <img src="foun.jpg" alt="Makeup Product 3">
+        <img src="../resources/user/lipstick.jpg" alt="Makeup Product 3">
       </div>
     </div>
   </div>

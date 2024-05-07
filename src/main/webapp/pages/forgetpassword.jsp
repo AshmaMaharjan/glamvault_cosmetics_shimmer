@@ -9,11 +9,11 @@
 </head>
 <body>
   <div class="Wrapper">
-    <form action="/GlamVault_Cosmetics_Shimmer/ForgetpasswordServlet" method="POST" >
+    <form action="/GlamVault_Cosmetics_Shimmer/Forgetpassword" method="POST" >
       <h2>Forget Password</h2>
       <div class="ControlForm">
-        <input type="text" id="phoneNumber" name="phoneNumber" required>
-        <label for="phoneNumber">Enter your phone number</label>
+        <input type="text" id="username" name="username" required>
+        <label for="username">Enter your username</label>
       </div>
       <div class="ControlForm">
         <input type="password" id="newPassword" name="newPassword" required>

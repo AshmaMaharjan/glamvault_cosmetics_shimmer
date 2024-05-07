@@ -12,9 +12,10 @@ body {
   align-items: center;
   padding: 10px;
   font-family: 'Poppins', sans-serif;
-  background-image: url(bb.png);
+  background-image: url("resources/user/bb.png");
   background-size: cover;
   background-position: center;
+  background: url("../resources/user/bb.png") center/cover, #f6f3f3;
 }
 
 .container {

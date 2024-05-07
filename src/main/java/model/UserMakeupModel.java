@@ -8,13 +8,13 @@ import javax.servlet.http.Part;
 
 import util.stringUtil;
 
-public class UserModel implements Serializable {
+public class UserMakeupModel implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private String user_name;
-	private String full_name;
+	private String username;
+	private String fullname;
 	private String email;
-	private String phone_number;
+	private String phone_num;
 	private LocalDate dob;
 	private String address;
 	private String password;
@@ -22,17 +22,17 @@ public class UserModel implements Serializable {
 	private String imageUserUrl;
 	private String role;
 	
-	public UserModel () {}
+	public UserMakeupModel () {}
 
 
 
-	public UserModel(String user_name, String full_name, String email, String phone_number, LocalDate dob,
+	public UserMakeupModel(String username, String full_name, String email, String phone_number, LocalDate dob,
 			String address, String password, String gender, Part user_image, String role) {
 		super();
-		this.user_name = user_name;
-		this.full_name = full_name;
+		this.username = username;
+		this.fullname = full_name;
 		this.email = email;
-		this.phone_number = phone_number;
+		this.phone_num = phone_number;
 		this.dob = dob;
 		this.address = address;
 		this.password = password;
@@ -43,21 +43,33 @@ public class UserModel implements Serializable {
 
 
 
-	public String getUser_name() {
-		return user_name;
+	
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getFull_name() {
-		return full_name;
+
+
+	
+
+	public String getFullname() {
+		return fullname;
 	}
 
-	public void setFull_name(String full_name) {
-		this.full_name = full_name;
+
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
+
+
 
 	public String getEmail() {
 		return email;
@@ -67,13 +79,18 @@ public class UserModel implements Serializable {
 		this.email = email;
 	}
 
-	public String getPhone_number() {
-		return phone_number;
+	
+	public String getPhone_num() {
+		return phone_num;
 	}
 
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
+
+
+	public void setPhone_num(String phone_num) {
+		this.phone_num = phone_num;
 	}
+
+
 
 	public LocalDate getDob() {
 		return dob;

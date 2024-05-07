@@ -24,11 +24,24 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String user_name = request.getParameter(stringUtil.User_name);
+    	String username = request.getParameter(stringUtil.User_name);
         String password = request.getParameter(stringUtil.Password);
+        
+        if (username.length() < 6) {
+            String errorMessage = "Invalid User name. Please enter more than 6 characters";
+            request.setAttribute(stringUtil.MESSAGE_ERROR, errorMessage);
+            request.getRequestDispatcher(stringUtil.PAGE_URL_REGISTER).forward(request, response);
+            return;
+        }
 
+        if (!username.matches("^[a-zA-Z0-9]{6,}$")) {
+            String errorMessage = "Invalid User name. Please don't enter symbols.";
+            request.setAttribute(stringUtil.MESSAGE_ERROR, errorMessage);
+            request.getRequestDispatcher(stringUtil.PAGE_URL_REGISTER).forward(request, response);
+            return;
+        }
         // Creating a LoginModel object with user input
-        LoginModel loginModel = new LoginModel(user_name, password);
+        LoginModel loginModel = new LoginModel(username, password);
 
         // Calling the method to retrieve login information from the database
         Loginresult loginResult = dbController.getStudLoginInfo(loginModel);
@@ -42,7 +55,7 @@ public class LoginServlet extends HttpServlet {
             if ("admin".equals(loginResult.getRole())) {
             	System.out.println("Admin"+loginResult);
             	HttpSession userSession = request.getSession();
-                userSession.setAttribute("username", user_name);
+                userSession.setAttribute("username", username);
                 userSession.setAttribute("role", "admin"); // Set admin role
                 userSession.setMaxInactiveInterval(30 * 30);
                 userSession.setAttribute("loggedIn", true);
@@ -52,7 +65,7 @@ public class LoginServlet extends HttpServlet {
             } else {
             	System.out.println("user");
             	HttpSession userSession = request.getSession();
-                userSession.setAttribute("username", user_name);
+                userSession.setAttribute("username", username);
                 userSession.setMaxInactiveInterval(30 * 30);
                 userSession.setAttribute("loggedIn", true);
                 // If the user is not an admin, redirect to the home page

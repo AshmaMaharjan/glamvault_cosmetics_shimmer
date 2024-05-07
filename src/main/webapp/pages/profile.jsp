@@ -1,5 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ page import="controller.database.GlamVaultDBController" %>
+
+<%@ page import="model.UserMakeupModel" %>
+<%@ page import = "util.stringUtil" %>
+<%@ page import="model.Loginresult" %>
+    <%
+    // Check if the user is logged in
+    // Assuming you have a session attribute named "loggedInUser" that stores the logged-in user's username
+    String loggedInUsername = (String) session.getAttribute(stringUtil.User_name);
+    if (loggedInUsername == null || loggedInUsername.isEmpty()) {
+        // Redirect to login page if not logged in
+        response.sendRedirect(request.getContextPath() + "/pages/login.jsp");
+        return; // Stop further execution
+    }
+
+    // Initialize the database controller
+    GlamVaultDBController dbController = new GlamVaultDBController();
+    
+    // Retrieve user profile information from the database based on the logged-in username
+    UserMakeupModel profileUser = dbController.getProfileUser(loggedInUsername);
+
+    // Check if user profile is null
+    if (profileUser == null) {
+        // Handle case where user profile is not found
+        // For example, display an error message
+        out.println("User profile not found");
+        return; // Stop further execution
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +40,7 @@
 <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #FFE6EE;
+            
             margin: 0;
             padding: 0;
         }
@@ -25,8 +56,8 @@
         }
 
         .profile-header {
-            background-color: #FFB6C1;
-            color: #fff;
+            background-color: #f48fb1;
+            color: #333;
             padding: 20px;
             text-align: center;
             border-top-left-radius: 20px;
@@ -63,8 +94,8 @@
         }
 
         .edit-button button {
-            background-color: #FFB6C1;
-            color: #fff;
+            background-color: #f48fb1;
+            color: #333;
             border: none;
             border-radius: 5px;
             padding: 12px 20px;
@@ -79,6 +110,7 @@
         }
     </style>
 <body>
+<jsp:include page="header.jsp"/> 
     <div class="profile-container">
         <div class="profile-header">
             <h1>User's Profile</h1>
@@ -86,24 +118,30 @@
         <div class="profile-details">
             <div class="detail">
                 <label>Username:</label>
-                <span>Asshh</span>
+                <span><%= profileUser.getUsername()%></span> 
             </div>
             <div class="detail">
                 <label>Full Name:</label>
-                <span>Ashma Maharjan</span>
+                <span><%= profileUser.getFullname()%></span>
             </div>
             <div class="detail">
                 <label>Email:</label>
-                <span>ashma@gmail.com</span>
+                <span><%=profileUser.getEmail()%></span>
             </div>
             <div class="detail">
                 <label>Address:</label>
-                <span>chakupat</span>
+                <span><%=profileUser.getAddress()%></span>
             </div>
         </div>
-        <div class="edit-button">
-            <button onclick="window.location.href='../newww/profileUpdate.html'">Edit Profile</button>
-        </div>
+       <form action="${pageContext.request.contextPath}/ModifyUserServlet" method="post">
+                <input type="hidden" id="user_name" name="user_name" value="<%= profileUser.getUsername()%>">
+                <input type="hidden" id="full_name" name="full_name" value="<%= profileUser.getFullname() %>">
+                <input type="hidden" id="email" name="email" value="<%= profileUser.getEmail() %>">
+                <input type="hidden" id="address" name="address" value="<%= profileUser.getAddress() %>">
+                <div class="edit-button">
+                    <button type="submit">Update</button>
+                </div>
+            </form>
     </div>
 </body>
 </html>

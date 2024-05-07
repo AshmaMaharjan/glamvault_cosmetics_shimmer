@@ -1,6 +1,5 @@
 @charset "ISO-8859-1";
 
-
 * {
   margin: 0;
   padding: 0;
@@ -17,15 +16,8 @@ body {
   width: 100%;
   padding: 0 10px;
   position: relative;
-}
-
-body::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
   /* Set the background image and the fallback color */
-  background: url("${pageContext.request.contextPath}/resources/user/bb.png") center/cover,; /* Example pastel pink color */
+  background: url("../resources/user/bb.png") center/cover, #f6f3f3; /* Example pastel pink color */
 }
 
 .Wrapper {
@@ -37,7 +29,7 @@ body::before {
   backdrop-filter: blur(9px);
   -webkit-backdrop-filter: blur(9px);
   /* Set the background color of the login card to #F3D4D5 */
-  background-color: #f6f3f3;
+  background-color: rgba(246, 243, 243, 0.8); /* Set background color with transparency */
 }
 
 form {

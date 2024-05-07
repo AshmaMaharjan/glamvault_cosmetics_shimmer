@@ -8,6 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
 <style type="text/css">
 * {
     margin: 0;
@@ -157,10 +158,10 @@ body {
         </div>
         <ul class="menulinks">
             <li><a href="home.jsp">Home</a></li>
-            <li class="center"><a href="profile.jsp">Profile</a></li>
-            <li class="forward"><a href="aboutus.jsp">About Us</a></li>
-            <li class="forward"><a href="#">Product</a></li>
-           <li class="forward"><a href="contact.jsp">Contact</a></li>
+            <li class="center"><a href="${pageContext.request.contextPath}/pages/profile.jsp">Profile</a></li>
+            <li class="forward"><a href="${pageContext.request.contextPath}/pages/aboutus.jsp">About Us</a></li>
+            <li class="forward"><a href="${pageContext.request.contextPath}/pages/product.jsp">Product</a></li>
+           <li class="forward"><a href="${pageContext.request.contextPath}/pages/contact.jsp">Contact</a></li>
              <li>
              
                         <div class="login-wrapper">

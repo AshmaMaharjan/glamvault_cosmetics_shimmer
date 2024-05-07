@@ -5,15 +5,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
-    /* height: 100vh; */
-    /* display: flex; */
-    align-items: flex-start;
-    justify-content: flex-end;
-    background: #f5f5dc;
-    padding: 20px;
-    position: relative;
-}
+
 
 .menuheader {
     position: absolute;
@@ -21,7 +13,7 @@ body {
     left: 0;
     font-size: 20px;
     font-weight: bold;
-    color: #fff; /* Text color for the logo */
+    color: #333; /* Text color for the logo */
     z-index: 4; /* Ensure the header stays above the navigation */
 }
 
@@ -33,7 +25,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-end; /* Align text to the right corner */
-    background: #9F8C76; /* Background color for the navigation bar */
+    background: #fff; /* Background color for the navigation bar */
     padding: 20px 15px;
     border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);

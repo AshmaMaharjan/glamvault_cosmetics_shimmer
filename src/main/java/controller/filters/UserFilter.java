@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import util.stringUtil;
 
-@WebFilter(urlPatterns = {"/pages/profile.jsp", "/pages/contactUs.jsp", "/pages/home.jsp"})
+@WebFilter(urlPatterns = {"/pages/profile.jsp", "/pages/home.jsp"})
 public class UserFilter implements Filter {
     
 

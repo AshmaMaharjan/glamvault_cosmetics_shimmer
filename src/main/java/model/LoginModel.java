@@ -1,26 +1,29 @@
 package model;
 
 public class LoginModel {
-	private String user_name;
+	private String username;
 	private String password;
 
 	public LoginModel(String user_name, String password ){
 		super();
-		this.user_name = user_name;
+		this.username = user_name;
 		this.password = password;
 		
 	}
 	
 
 
-	public String getUser_name() {
-		return user_name;
+	
+
+
+
+	public String getUsername() {
+		return username;
 	}
 
 
-
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 

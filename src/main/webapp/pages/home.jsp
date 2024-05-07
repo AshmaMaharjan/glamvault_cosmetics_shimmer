@@ -5,7 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-  
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  
  <style>
  @charset "ISO-8859-1";
@@ -76,47 +77,43 @@
 }
 
 /* Product cards section styles */
-.Wrapper {
-    width: 100%;
-    padding: 0 20px; /* Adjust padding */
-}
-
-.container-box {
+.product-container {
     display: flex;
-    flex-wrap: wrap; /* Allow cards to wrap to the next line if needed */
-    justify-content: center; /* Center align cards horizontally */
-    margin: 40px auto; /* Adjust margin for spacing */
+    justify-content: space-around; /* Adjust spacing between cards */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    margin-top: 40px; /* Adjust margin top */
+    padding: 20px; /* Adjust padding */
 }
 
-.unique-box {
-    width: 300px; /* Adjust card width */
-    height: 450px; /* Adjust card height */
+.product-card {
+    width: 250px; /* Adjust card width */
+    height: 350px; /* Adjust card height */
     background: #fff;
-    margin: 20px; /* Adjust margin for spacing between cards */
+    margin: 0 10px; /* Adjust margin for spacing between cards */
     padding: 20px; /* Adjust padding */
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.unique-box .image img {
+.product-card img {
     width: 100%;
     height: 200px; /* Adjust image height */
     object-fit: cover;
 }
 
-.unique-box h3 {
+.product-card h2 {
     margin-top: 15px; /* Adjust margin top */
     margin-bottom: 10px; /* Adjust margin bottom */
     font-size: 20px; /* Increase font size */
 }
 
-.unique-box p {
+.product-card p {
     line-height: 1.6; /* Adjust line height */
     font-size: 16px; /* Increase font size */
 }
 
-.unique-box a {
-    display: inline-block; /* Ensure "Add to Cart" button is visible */
+.product-card button {
     margin-top: 20px; /* Adjust margin top */
     padding: 10px 20px; /* Adjust padding */
     font-size: 16px; /* Increase font size */
@@ -124,13 +121,14 @@
     color: white;
     border-radius: 5px;
     text-decoration: none; /* Remove underline */
+    border: none; /* Remove border */
 }
 
-.unique-box a:hover {
+.product-card button:hover {
     background-color: #AA336A; /* Change button background color on hover */
     color: black;
 }
- 
+
  </style>
 </head>
 <body>
@@ -152,37 +150,23 @@
         </div>
     </section>
     <!-- product cards -->
-    <section>
-        <div class="Wrapper">
-            <div class="container-box">
-                <div class="unique-box">
-                    <div class="image"><img alt="Blush" src="e.jpg"></div>
-                    <h3>Blush</h3>
-                    <p>Radiant confidence and blushing beauty</p>
-                    <div class="price">
-                        <p>$25</p>
+<section id="products" class="products">
+        <sql:setDataSource var="dataSource" driver="com.mysql.cj.jdbc.Driver"
+                    url="jdbc:mysql://localhost:3306/glamvault_Cosmetics_shimmer" user="root" password="" />
+                <sql:query dataSource="${dataSource}" var="makeupGlams">
+                    SELECT * FROM makeup;
+                </sql:query>
+        <div class="product-container">
+            <c:forEach var="makeupGlam" items="${makeupGlams.rows}">
+                <div class="product-card">
+                    <img src="${pageContext.request.contextPath}/resources/user/${makeupGlam.product_image}" alt="Product Image">
+                    <div class="product-details">
+                        <h2>${makeupGlam.Makeup_Name}</h2>
+                       
+                        <button>Buy now</button>
                     </div>
-                    <a href="#">Add to Cart</a>
                 </div>
-                <div class="unique-box">
-                    <div class="image"><img alt="Eyeshadow" src="f.jpg"></div>
-                    <h3>Eyeshadow</h3>
-                    <p>Paint your dreams with every shade.</p>
-                    <div class="price">
-                        <p>$50</p>
-                    </div>
-                    <a href="#">Add to Cart</a>
-                </div>
-                <div class="unique-box">
-                    <div class="image"><img alt="Foundation" src="g.jpg"></div>
-                    <h3>Foundation</h3>
-                    <p>Build your confidence, layer by layer.</p>
-                    <div class="price">
-                        <p>$45</p>
-                    </div>
-                    <a href="#">Add to Cart</a>
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </section>
 </body>

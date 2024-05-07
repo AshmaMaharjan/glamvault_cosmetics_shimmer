@@ -6,10 +6,10 @@ public class stringUtil {
 	public static final String IMAGE_DIR_USER = "Users\\User\\eclipse-workspace\\GlamVault_Cosmetics_Shimmer\\src\\main\\webapp\\resources\\user\\";
     public static final String IMAGE_DIR_SAVE_PATH = "C:" + File.separator + IMAGE_DIR_USER;
 	public static final String User_Insert = "INSERT INTO user "
-            + "(user_name, full_name, email, phone_number, dob, address, password, gender,image,role)"
+            + "(username, full_name, email, phone_number, dob, address, password, gender,image,role)"
             + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    public static final String GET_LOGIN_DETAILS = "SELECT * FROM user WHERE user_name = ? ";
+    public static final String GET_LOGIN_DETAILS = "SELECT * FROM user WHERE username = ? ";
     
     public static final String User_name ="username";
     public static final String Full_name ="full-name";

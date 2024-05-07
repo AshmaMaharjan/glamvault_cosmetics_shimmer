@@ -12,7 +12,7 @@ import controller.database.GlamVaultDBController;
 /**
  * Servlet implementation class Forgetpassword
  */
-@WebServlet("/ForgetpasswordServlet")
+@WebServlet("/Forgetpassword")
 public class Forgetpassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private GlamVaultDBController dbController;
@@ -29,14 +29,15 @@ public class Forgetpassword extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String phoneNumber = request.getParameter("phoneNumber");
-		System.out.println("PhoneNumber"+phoneNumber);
+		String username = request.getParameter("username");
+		System.out.println("username"+username);
         String newPassword = request.getParameter("newPassword");
 
         System.out.println("PhoneNumber"+newPassword);
         // Call the updateUserPasswordIfValid method from GadgetDbController
-        int result = dbController.modifyPasswordValid(phoneNumber, "", newPassword); // Pass empty string for old password, assuming it's not needed
-
+        int result = dbController.modifyPasswordValid(username, newPassword); // Pass empty string for old password, assuming it's not needed
+        System.out.println(result);
+        
         if (result == 1) {
             // Password updated successfully
             // Redirect to a success page or show a success message

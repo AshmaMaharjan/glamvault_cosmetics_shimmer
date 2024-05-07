@@ -1,107 +1,119 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
 
-
-/* Hero Section Styles */
 .hero {
-    background-image: url('makeup-bg.jpg'); /* Background image */
-    background-size: cover;
-    background-position: center;
-    color: #333;
-    padding: 100px 0;
-    text-align: center;
+  background-image: url('makeup-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #333;
+  padding: 100px 0;
+  text-align: center;
 }
 
 .hero-content {
-    max-width: 800px;
-    margin: 0 auto;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .hero h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
 .hero p {
-    font-size: 18px;
-    margin-bottom: 30px;
+  font-size: 18px;
+  margin-bottom: 30px;
 }
 
 .hero .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #AA336A; /* Deep pink */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #AA336A;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .hero .btn:hover {
-    background-color: #880E4F; /* Dark pink */
+  background-color: #880E4F;
 }
 
-/* Product Section Styles */
 .products {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 50px 0;
+  padding: 50px 0;
+}
+
+.product-container {
+  display: flex;
+  justify-content: flex-start; /* Align items at the start of the flex container */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  overflow-x: auto; /* Allow horizontal scrolling */
+  padding: 0 20px; /* Add some padding for better spacing */
 }
 
 .product-card {
-    width: 300px;
-    background-color: #fff;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+  flex: 0 0 auto; /* Ensure the product cards don't grow or shrink */
+  width: 250px;
+  background-color: #fff;
+  margin-right: 20px; /* Add some margin between cards */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.product-image img {
-    width: 100%;
-    height: auto;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+/* Remove margin from the last product card */
+.product-card:last-child {
+  margin-right: 0;
+}
+
+
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .product-details {
-    padding: 20px;
+  padding: 20px;
 }
 
 .product-details h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .product-details p {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 20px;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
 }
 
 .product-details .price {
-    font-size: 18px;
-    font-weight: bold;
-    color: #AA336A; /* Deep pink */
-    margin-bottom: 10px;
-    display: block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #AA336A;
+  margin-bottom: 10px;
+  display: block;
 }
 
-.product-details .btn {
-    display: inline-block;
-    padding: 8px 20px;
-    background-color: #AA336A; /* Deep pink */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+.product-details button {
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  background-color: #AA336A;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
-.product-details .btn:hover {
-    background-color: #880E4F; /* Dark pink */
-}
-
-/* Footer Styles */
-footer {
-    /* Add styles for the footer */
+.product-details button:hover {
+  background-color: #880E4F;
 }

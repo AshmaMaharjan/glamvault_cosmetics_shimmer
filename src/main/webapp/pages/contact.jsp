@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/stylesheets/contact.css" />
 </head>
 <body>
+<jsp:include page="header.jsp"/> 
   <header>
     <h1>Contact Us</h1>
   </header>

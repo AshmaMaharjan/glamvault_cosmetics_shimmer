@@ -5,7 +5,7 @@ body {
   }
   
   header, footer {
-    background-color: #FFB6C1; /* Changed to beige */
+    background-color: #f48fb1; /* Changed to beige */
     
     color: #333; /* Changed text color for better contrast */
     text-align: center;
@@ -43,7 +43,7 @@ body {
   }
   
   button {
-    background-color: #FFB6C1;
+    background-color: #f48fb1;
     color: #333; 
     border: none;
     padding: 10px 20px;

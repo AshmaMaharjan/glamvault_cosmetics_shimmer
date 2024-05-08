@@ -27,15 +27,15 @@ public class LoginServlet extends HttpServlet {
     	String username = request.getParameter(stringUtil.User_name);
         String password = request.getParameter(stringUtil.Password);
         
-        if (username.length() < 6) {
-            String errorMessage = "Invalid User name. Please enter more than 6 characters";
+        if (username.length() < 5) {
+            String errorMessage = "Username must contain more than 5 characters.";
             request.setAttribute(stringUtil.MESSAGE_ERROR, errorMessage);
             request.getRequestDispatcher(stringUtil.PAGE_URL_REGISTER).forward(request, response);
             return;
         }
 
         if (!username.matches("^[a-zA-Z0-9]{6,}$")) {
-            String errorMessage = "Invalid User name. Please don't enter symbols.";
+            String errorMessage = "Username cannot contain symbols.";
             request.setAttribute(stringUtil.MESSAGE_ERROR, errorMessage);
             request.getRequestDispatcher(stringUtil.PAGE_URL_REGISTER).forward(request, response);
             return;
@@ -77,14 +77,14 @@ public class LoginServlet extends HttpServlet {
         	System.out.println("username or password");
             // Username or password mismatch
             // Set an error message attribute indicating the user should create a new account
-            request.setAttribute(stringUtil.MESSAGE_ERROR, "Invalid email or password. Create a new account.");
+            request.setAttribute(stringUtil.MESSAGE_ERROR, "The email or password entered is invalid. Please create a new account.");
             // Forward the request to the login page
             request.getRequestDispatcher(stringUtil.PAGE_URL_LOGIN).forward(request, response);
         } else if (loginResult.getStatus() == -1) {
         	System.out.println("username not found");
             // Username not found
             // Set an error message attribute indicating the user should create a new account
-            request.setAttribute(stringUtil.MESSAGE_ERROR, "Username not found. Create a new account.");
+            request.setAttribute(stringUtil.MESSAGE_ERROR, "The username entered was not found. Please create a new account.adfgff");
             // Forward the request to the login page
             request.getRequestDispatcher(stringUtil.PAGE_URL_LOGIN).forward(request, response);
         } else {

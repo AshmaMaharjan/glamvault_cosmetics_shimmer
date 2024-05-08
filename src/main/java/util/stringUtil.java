@@ -69,5 +69,3 @@ public class stringUtil {
 	public static final String LOGOUT = "Logout";
 	// End: Normal Text
 	}
-
-

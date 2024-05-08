@@ -22,7 +22,8 @@ body {
     /* display: flex; */
     align-items: flex-start;
     justify-content: flex-end;
-    background: #f8f8f7;
+    background: ##000000
+;
     padding: 20px;
     position: relative;
 }
@@ -72,7 +73,7 @@ body {
     left: 0;
     height: 3px;
     width: 0%;
-    background: #AA336A;
+    background: #AA336A; /*pink*/
     border-radius: 12px;
     transition: all 0.4s ease;
 }
@@ -128,7 +129,7 @@ body {
     cursor: pointer;
     border-radius: 5px;
     background-color: #b59e7a; /* Dark beige color */
-    color: #fff;
+    color: #000000;
     text-decoration: none;
     transition: background-color 0.3s ease;
 }
@@ -157,7 +158,7 @@ body {
             GlamVault Cosmetics Shimmer <!-- This is   ${pageContext.request.contextPath} your logo text -->
         </div>
         <ul class="menulinks">
-            <li><a href="home.jsp">Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/pages/home.jsp">Home</a></li>
             <li class="center"><a href="${pageContext.request.contextPath}/pages/profile.jsp">Profile</a></li>
             <li class="forward"><a href="${pageContext.request.contextPath}/pages/aboutus.jsp">About Us</a></li>
             <li class="forward"><a href="${pageContext.request.contextPath}/pages/product.jsp">Product</a></li>

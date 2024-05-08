@@ -41,34 +41,34 @@ public class UpdateMakeupServlet extends HttpServlet {
         String priceparameter = request.getParameter("price");
 
 
-        // Parse price from string to double
+        
         double price = 0.0;
         try {
             if (priceparameter != null && !priceparameter.isEmpty()) {
                 price = Double.parseDouble(priceparameter);
             }
         } catch (NumberFormatException e) {
-            // Handle the case where price is not a valid double
-            e.printStackTrace(); // Log the exception
+         
+            e.printStackTrace(); 
             response.sendRedirect(request.getContextPath() + "/pages/productAdmin.jsp?error=true");
-            return; // Exit the method to avoid further processing
+            return; 
         }
 
-        // Check if helmetId is null or empty
+        
         if (MakeupId == null || MakeupId.isEmpty()) {
-            // Handle the case where helmetId is null or empty
+            
             response.sendRedirect(request.getContextPath() + "/pages/productAdmin.jsp?error=true");
-            return; // Exit the method to avoid further processing
+            return; 
         }
 
-        // Update the database with the new values
+     
         int result = dbController.updateMakeup(
         		new MakeupModel(Integer.parseInt(MakeupId),MakeupName,price,null));
 	
         		
             
 
-        // Redirect back to the original JSP page with success or error message
+        
         if (result == 1) {
             response.sendRedirect(request.getContextPath() + "/pages/productAdmin.jsp?success=true");
         } else {

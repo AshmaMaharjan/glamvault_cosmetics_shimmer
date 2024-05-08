@@ -31,19 +31,14 @@ public class UserFilter implements Filter {
 
         HttpSession session = httpRequest.getSession(false);
 
-        boolean isLoggedIn = session != null && session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn");
-        String username = session != null ? (String) session.getAttribute(stringUtil.User_name) : null;
-        //String userRole = session != null ? (String) session.getAttribute(StringUtil.role) : null;
-
-        System.out.println("Username: " + username); // Add logging
-        //System.out.println("Role: " + userRole); // Add logging
-
-        // Check if the user is logged in 
-        if (isLoggedIn) {
-            // User is authenticated allow access to pages
+        boolean SignedIn = session != null && session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn");
+        String user_name = session != null ? (String) session.getAttribute(stringUtil.User_name) : null;
+       
+        if (SignedIn) {
+            
             chain.doFilter(request, response);
         } else {
-            // User is not authenticated, redirect to login page
+            
             System.out.println("Access denied!"); // Add logging
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/pages/login.jsp");
         }

@@ -2,14 +2,15 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9; /* Light background color */
+  background-color: #fff; /* Light background color */
 }
 
 header {
-  background-color: #f48fb1; /* Pinkish color */
-  color: #333;
+   /* Pinkish color */
+  color: #f48fb1;
   padding: 20px;
   text-align: center;
+   margin-top: 80px;
 }
 
 main {

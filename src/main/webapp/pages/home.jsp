@@ -13,7 +13,7 @@
 /* Home section styles */
 .home {
     width: 100%;
-    height: 80vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,6 +40,7 @@
     font-size: 55px;
     font-family: 'Arial', sans-serif; /* Change font */
     text-shadow: -1px 1px 1px black;
+    height: 20vh;
 }
 
 .main_content h1 span {
@@ -133,6 +134,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/> 
+
     <!-- home content -->
     <section class="home">
         <div class="main_content">
@@ -169,5 +171,6 @@
             </c:forEach>
         </div>
     </section>
+    
 </body>
 </html>

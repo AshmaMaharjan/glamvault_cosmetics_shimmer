@@ -38,25 +38,24 @@ public class AuthenticationFilter implements Filter {
 
         HttpSession session = httpRequest.getSession(false);
 
-        boolean isLoggedIn = session != null && session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn");
-        String username = session != null ? (String) session.getAttribute(stringUtil.User_name) : null;
-        String userRole = session != null ? (String) session.getAttribute(stringUtil.role) : null;
+        boolean SignedIn = session != null && session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn");
+       
+        String user_Role = session != null ? (String) session.getAttribute(stringUtil.role) : null;
 
-        System.out.println("Username: " + username); // Add logging
-        System.out.println("Role: " + userRole); // Add logging
+      
 
-        // Check if the user is logged in and has the admin role
-        if (isLoggedIn && "admin".equals(userRole)) {
-            // User is authenticated and is an admin, allow access to admin panel
+        
+        if (SignedIn && "admin".equals(user_Role)) {
+           
         	if (httpRequest.getRequestURI().endsWith("/pages/productAdmin.jsp")) {
-                // Fetch all helmets from the database
+                
         		ArrayList<MakeupModel> makeupGlams = dbController.getAllMakeup();
 				request.setAttribute("makeupGlams", makeupGlams);
             }
 
             chain.doFilter(request, response);
         } else {
-            // User is not authenticated as admin, redirect to login page
+           
             System.out.println("Admin access denied!"); // Add logging
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/pages/login.jsp");
         }

@@ -1,85 +1,8 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
-}
-
-.hero {
-  background-image: url('makeup-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  color: #333;
-  padding: 100px 0;
-  text-align: center;
-}
-
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.hero h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 18px;
-  margin-bottom: 30px;
-}
-
-.hero .btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #AA336A;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.hero .btn:hover {
-  background-color: #880E4F;
-}
-
-.products {
-  padding: 50px 0;
-}
-
-.product-container {
-  display: flex;
-  justify-content: flex-start; /* Align items at the start of the flex container */
-  flex-wrap: nowrap; /* Prevent wrapping */
-  overflow-x: auto; /* Allow horizontal scrolling */
-  padding: 0 20px; /* Add some padding for better spacing */
-}
-
-.product-card {
-  flex: 0 0 auto; /* Ensure the product cards don't grow or shrink */
-  width: 250px;
-  background-color: #fff;
-  margin-right: 20px; /* Add some margin between cards */
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Remove margin from the last product card */
-.product-card:last-child {
-  margin-right: 0;
-}
-
-
-
-.product-card img {
-  width: 100%;
-  height: auto;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
+/* Specify styles for the product details */
 .product-details {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-details h2 {
@@ -102,11 +25,15 @@ body {
   display: block;
 }
 
-.product-details button {
+.product-details .buy-button {
+  width: 100%;
+}
+
+.product-details .buy-button button {
   display: block;
   width: 100%;
   padding: 8px 0;
-  background-color: #AA336A;
+  background-color: #AA336A; /* Changed the background color */
   color: #fff;
   text-decoration: none;
   border: none;
@@ -114,6 +41,6 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.product-details button:hover {
+.product-details .buy-button button:hover {
   background-color: #880E4F;
 }
